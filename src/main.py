@@ -1,9 +1,9 @@
 from object.bill import Bill
 from object.flatmate import Flatmate
-from src.object.pdf_report import PdfReport
+from src.object.pdf_report import PdfReport, FileShare
 
 amount = float(input("Hey user, enter the bill amount: "))
-period = input("What is the period? E.g. December 2022 ")
+period = input("What is the period? E.g. December 2022: ")
 
 name1 = input("What is your name?")
 days_in_hourse1 = int(input(f"How many days did {name1} stay in the house during the bill period?"))
@@ -20,3 +20,6 @@ print(f"{flatmate2.name} pays: ", flatmate2.pays(the_bill, flatmate1))
 
 pdf_report = PdfReport(filename=f"{the_bill.period}.pdf")
 pdf_report.generate(flatmate1, flatmate2, the_bill)
+
+file_share = FileShare(filepath=pdf_report.filename)
+print(file_share.share())
